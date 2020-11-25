@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:51:14 by user42            #+#    #+#             */
-/*   Updated: 2020/11/24 16:11:50 by user42           ###   ########.fr       */
+/*   Updated: 2020/11/25 10:20:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ int		ft_hasnewline(char *str);
 char	*ft_majtmp(char *tmp);
 char	*ft_newline(char *tmp);
 
-
 #endif
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 32
-#endif 
+#endif
