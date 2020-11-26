@@ -29,6 +29,7 @@ char	*ft_joinofgnl(char *s1, char *s2)
 	char			*res;
 	unsigned int	i;
 	unsigned int	j;
+	unsigned int	len;
 
 	if (!s1 && !s2)
 		return (0);
@@ -36,12 +37,14 @@ char	*ft_joinofgnl(char *s1, char *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(s1))
+	len = ft_strlen(s1);
+	while (i < len)
 	{
 		res[i] = s1[i];
 		i++;
 	}
-	while (j < ft_strlen(s2))
+	len = ft_strlen(s2);
+	while (j < len)
 	{
 		res[i + j] = s2[j];
 		j++;

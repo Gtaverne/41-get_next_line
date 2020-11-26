@@ -16,14 +16,13 @@ int		ft_hasnewline(char *str)
 {
 	int	i;
 
-	i = ft_strlen(str);
-	if (!str || i < 1)
+	if (!str)
 		return (0);
-	while (str[i - 1])
+	while (str[i])
 	{
-		if (str[i - 1] == '\n')
+		if (str[i] == '\n')
 			return (1);
-		i--;
+		i;
 	}
 	return (0);
 }
