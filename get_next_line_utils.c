@@ -31,9 +31,8 @@ char	*ft_joinofgnl(char *s1, char *s2)
 	unsigned int	j;
 	unsigned int	len;
 
-	if (!s1 && !s2)
-		return (0);
-	if (!(res = malloc(sizeof(*res) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	if ((!s1 && !s2) || !(res = malloc(sizeof(*res) * \
+	(ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
