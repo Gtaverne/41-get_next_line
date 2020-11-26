@@ -16,14 +16,14 @@ int		ft_hasnewline(char *str)
 {
 	int	i;
 
-	i = 0;
-	if (!str)
+	i = ft_strlen(str);
+	if (!str || i < 1)
 		return (0);
-	while (str[i])
+	while (str[i - 1])
 	{
-		if (str[i] == '\n')
+		if (str[i - 1] == '\n')
 			return (1);
-		i++;
+		i--;
 	}
 	return (0);
 }
@@ -80,15 +80,15 @@ char	*ft_newline(char *tmp)
 int		get_next_line(int fd, char **line)
 {
 	char		*lu;
-	static char	*tmp;
+	static char	*tmp[256];
 	int			len;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(lu = malloc(sizeof(*lu) * (BUFFER_SIZE + 1))))
 		return (-1);
-	len = 1;
-	while (!ft_hasnewline(tmp) && len != 0)
+	len = BUFFER_SIZE;
+	while (len != 0 && !(ft_hasnewline(tmp[fd])))
 	{
 		if ((len = read(fd, lu, BUFFER_SIZE)) == -1)
 		{
@@ -96,11 +96,11 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		lu[len] = '\0';
-		tmp = ft_joinofgnl(tmp, lu);
+		tmp[fd] = ft_joinofgnl(tmp[fd], lu);
 	}
 	free(lu);
-	*line = ft_newline(tmp);
-	tmp = ft_majtmp(tmp);
+	*line = ft_newline(tmp[fd]);
+	tmp[fd] = ft_majtmp(tmp[fd]);
 	if (len == 0)
 		return (0);
 	return (1);
